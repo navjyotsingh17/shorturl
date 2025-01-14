@@ -9,7 +9,7 @@ const Shorten = () => {
     const [shorturl, setShorturl] = useState("")
     const [generated, setGenerated] = useState("")
 
-    const generate = async () => {
+    const generate = async (url) => {
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -40,12 +40,12 @@ const Shorten = () => {
 
 
     return (
-        <div className='mx-auto max-w-lg bg-purple-100 p-5 rounded-lg flex flex-col gap-5 my-5'>
-            <h1 className='font-bold text-2xl'>Generate your short URLs</h1>
+        <div className='transition-transform duration-300 ease-in-out transform hover:scale-105 mt-40 mx-auto max-w-lg bg-purple-100 p-5 rounded-lg flex flex-col gap-5 my-5'>
+            <h1 className='font-bold text-2xl text-center'>Generate your short URLs</h1>
             <div className='flex flex-col gap-5'>
-                <input className='px-4 py-2' type="text" placeholder='Enter your URL (eg:- https://example.com)' onChange={e => { seturl(e.target.value) }} />
-                <input className='px-4 py-2' type="text" placeholder='Enter preffered short URL (eg:- adansdadjapopaojpd)' onChange={e => { setShorturl(e.target.value) }} />
-                <button className='bg-purple-500 shadow-lg rounded-lg p-3 py-1 font-bold hover:underline text-white' onClick={generate}>Shorten</button>
+                <input className='px-4 py-2 transition-transform duration-300 ease-in-out transform hover:scale-105' type="text" placeholder='Enter your URL (eg:- https://example.com)' onChange={e => { seturl(e.target.value) }} />
+                <input className='px-4 py-2 transition-transform duration-300 ease-in-out transform hover:scale-105' type="text" placeholder='Enter preffered short URL (eg:- example)' onChange={e => { setShorturl(e.target.value) }} />
+                <button className='bg-purple-500 shadow-lg rounded-lg p-3 py-1 font-bold hover:underline text-white transition-transform duration-300 ease-in-out transform hover:scale-105' onClick={()=>generate(url)}>Shorten</button>
             </div>
             {generated && <> <span className='font-bold text-lg'>Your link :- </span> <code> <Link className='bg-purple-200 p-2 rounded-lg font-bold text-lg hover:underline' target='_blank' href={generated}>{generated}</Link> </code> </>}
         </div>
